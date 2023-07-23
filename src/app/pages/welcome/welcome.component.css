@@ -1,0 +1,225 @@
+.container {
+    width: 100%;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 2px 0px 10px 2px grey;
+}
+
+.header .inner {
+    width: 100%;
+    max-width: 1200px;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.header h3 {
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+.logo {
+    width: 42px;
+    height: 40px;
+}
+
+.left {
+    width: 50%;
+    height: calc((100vh - 70px));
+    /* border: solid red 1px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.right {
+    height: calc((100vh - 70px));
+    width: 50%;
+    /* border: solid red 1px; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.login {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.login h3 {
+    font-size: 20px;
+    font-weight: 600px;
+}
+
+.login img {
+    width: 25px;
+    height: 30px;
+}
+
+.form {
+    width: 300px;
+    height: 200px;
+    border: solid rgb(131, 131, 131) 1px;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: rgb(232, 241, 255);
+    animation: bounce 1s;
+    opacity: 0.8;
+}
+
+@keyframes bounce {
+    from {
+        opacity: 0;
+        position: relative;
+        bottom: 100px;
+    }
+    to {
+        opacity: 1;
+        position: relative;
+        bottom: 0px;
+    }
+}
+
+.left .chatimg {
+    width: 200px;
+    height: 180px;
+    position: relative;
+    left: 40px;
+    bottom: 80px;
+    opacity: 0.9;
+}
+
+.image {
+    position: relative;
+    left: 400px;
+    z-index: -50;
+}
+
+.sideimg {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    z-index: -5;
+}
+
+.toop {
+    width: 600px;
+    /* height: ; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: bounce2 2.5s infinite;
+    position: relative;
+    bottom: 80px;
+    left: 170px;
+}
+
+@keyframes bounce2 {
+    0% {
+        position: relative;
+        bottom: 0px;
+    }
+    50% {
+        position: relative;
+        bottom: 30px;
+    }
+    100% {
+        position: relative;
+        bottom: 0px;
+    }
+}
+
+.toop .dot {
+    width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: absolute;
+    margin-left: 80px;
+}
+
+.toop .dots {
+    position: relative;
+    bottom: 90px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20px;
+    border: solid rgb(255, 255, 255) 0.1px;
+    background-color: rgba(255, 255, 255, 0.877);
+}
+
+.dot :nth-child(1) {
+    animation: dots 1.2s infinite;
+}
+
+.dot :nth-child(2) {
+    animation: dots 1.2s 0.4s infinite;
+}
+
+.dot :nth-child(3) {
+    animation: dots 1.2s 0.8s infinite;
+}
+
+@keyframes dots {
+    0% {
+        width: 20px;
+        height: 20px;
+    }
+    25% {
+        width: 16px;
+        height: 16px;
+    }
+    50% {
+        width: 12px;
+        height: 12px;
+    }
+    75% {
+        width: 16px;
+        height: 16px;
+    }
+    100% {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+h1 {
+    margin: 30px 0;
+}
+
+.title {
+    position: relative;
+    bottom: 38px;
+    left: 50px;
+}
+
+button {
+    margin: 20px;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    height: 40px;
+    width: 200px;
+    font-size: 20px;
+    border-radius: 15px;
+    cursor: pointer;
+    border: solid grey 1px;
+    padding: 0 25px;
+    /* background-color: rgba(32, 32, 32, 0.849); */
+    /* background-image: url('/assets/google.png'); */
+    background-size: cover;
+    background-position: 14px -3px;
+}

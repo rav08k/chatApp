@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "chat-app-b93a4": {
+      "hosting": {
+        "chat-app": [
+          "chat-app-b93a4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "chat-app-b93a4"
+  }
+}

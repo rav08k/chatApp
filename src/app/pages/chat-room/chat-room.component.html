@@ -1,0 +1,102 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container">
+    <div class="inner">
+        <div class="left">
+            <div class="user-details">
+                <div class="username">
+                    <img src="{{user.photoUrl}}" alt="profile">
+                    <h2>{{user.name}}</h2>
+                </div>
+                <div class="add-user">
+                    <form class="form2" [formGroup]='srch'>
+                        <div class="form-group">
+                            <input #usrSrch formControlName='srchInp' type="text" (keyup)="searchUser(usrSrch)" id="addUsr" placeholder="search people" (click)="isSearching = true">
+                        </div>
+                    </form>
+                </div>
+                <div class="group">
+                    <button (click)="groupShow = true;">new group</button>
+                </div>
+            </div>
+            <div class="contacts" *ngIf="!isSearching">
+                <ul *ngFor='let x of contacts'>
+                    <li id="{{x.id}}" *ngIf="x.id != user.id" class="users" (click)='activeUsr(x)'><img src="{{x.pic}}" alt="">{{x.name}}</li>
+                    <span *ngFor="let y of badgeId">
+                        <div class="count" *ngIf="y.includes(x.id.slice(0,7)) && badgeCount[y]>0 && !y.includes('group')">{{badgeCount[y]}}</div>
+                        <div class="count" *ngIf="y.includes(x.id) && badgeCount[y]>0 && y.includes('group')">{{badgeCount[y]}}</div>
+                    </span>
+                </ul>
+            </div>
+            <div class="srch-rslt-box" *ngIf="isSearching">
+                <img src="/assets/close icon.png" alt="" (click)="isSearching=false">
+                <ul *ngFor='let x of searchResults'>
+                    <li id="{{x}}" *ngIf="x.id != user.id" class="users" (click)='addContact(x)'><img src="{{x.pic}}" alt="">{{x.name}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right">
+            <div class="header" *ngIf="user.id != activeUser.id">
+                <img src="{{activeUser.pic}}" alt="profile" id="active-profile">
+                <h2>{{activeUser.name}}</h2>
+            </div>
+            <div class="chat-screen" id="chat-screen">
+                <div class="wlcm-scr" *ngIf="user.id == activeUser.id">
+                    <h1>welcome</h1>
+                    <hr>
+                    <br>
+                    <img src="{{user.photoUrl}}" alt="profile">
+                    <br>
+                    <h1>{{user.name}}</h1>
+                    <span>{{user.email}}</span><br>
+                    <span> userId : {{user.id}}</span>
+                </div>
+            </div>
+            <div class="footer" *ngIf="user.id != activeUser.id" id="footer">
+                <img id="showImg" alt="">
+                <form class="form" [formGroup]='msg' (ngSubmit)='send()'>
+                    <div class="form-group">
+                        <input formControlName='msgInp' type="text" class="form-input" required autofocus>
+                        <div class="file-cont">
+                            <input accept=".png,.jpg, .jpeg" type="file" formControlName="file" id="file" class="file-inp" (change)="showFile($event)">
+                            <i style="font-size:24px" class="fa">&#xf0c6;</i></div>
+                        <input type="submit" value="send" class="send">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="groupShow" class="grpShow">
+    <button (click)="groupShow = false; grp.reset()">x</button>
+    <form [formGroup]="grp" (ngSubmit)="createGroup($event)">
+        <div class="form-group grp-inp">
+            <label for="grpName">Enter Group Name : </label>
+            <input formControlName='grpName' type="text" class="form-input" required autofocus>
+        </div>
+        <div class="form-group grp-inp">
+            <label for="grpName">Choose Profile Img : </label>
+            <input formControlName='grpFile' type="file" class="form-input fileType" accept=".png,.jpg,.jpeg">
+        </div>
+        <div class="form-group members" *ngFor="let x of contacts" (click)="checked(x.id.slice(0,5),x)">
+            <div *ngIf="!x.id.includes('group')">
+                <img src="{{x.pic}}" alt="">
+                <label for="members">{{x.name}}</label>
+                <input id="{{x.id.slice(0,5)}}" formControlName='members' type="checkbox" class="form-input" value="{{x}}">
+            </div>
+        </div>
+        <div class="form-group">
+            <input type="submit" value="submit">
+        </div>
+    </form>
+</div>
+<style>
+    #sender span {
+        background-color: red;
+        width: 300px;
+    }
+</style>
+
+
+<div>
+
+</div>
